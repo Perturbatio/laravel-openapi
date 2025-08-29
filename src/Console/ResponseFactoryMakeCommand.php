@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 class ResponseFactoryMakeCommand extends GeneratorCommand
 {
     protected $name = 'openapi:make-response';
+
     protected $description = 'Create a new Response factory class';
+
     protected $type = 'Response';
 
     protected function getStub(): string

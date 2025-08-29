@@ -13,16 +13,10 @@ use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 #[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
 class TagsBuilderTest extends TestCase
 {
-    /**
-     *
-     * @param  array  $config
-     * @param  array  $expected
-     * @return void
-     */
     #[DataProvider('providerBuild')]
-    public function testBuild(array $config, array $expected): void
+    public function test_build(array $config, array $expected): void
     {
-        $builder = new TagsBuilder();
+        $builder = new TagsBuilder;
         $tags = $builder->build($config);
         $this->assertSameAssociativeArray($expected[0], $tags[0]->toArray());
     }
@@ -35,13 +29,13 @@ class TagsBuilderTest extends TestCase
                     [
                         'name' => 'post',
                         'description' => 'Posts',
-                    ]
+                    ],
                 ],
                 [
                     [
                         'name' => 'post',
                         'description' => 'Posts',
-                    ]
+                    ],
                 ],
             ],
             'If the external docs are present, it can output the correct json.' => [
@@ -53,7 +47,7 @@ class TagsBuilderTest extends TestCase
                             'description' => 'External API documentation',
                             'url' => 'https://example.com/external-docs',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     [
@@ -63,7 +57,7 @@ class TagsBuilderTest extends TestCase
                             'description' => 'External API documentation',
                             'url' => 'https://example.com/external-docs',
                         ],
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -71,10 +65,6 @@ class TagsBuilderTest extends TestCase
 
     /**
      * Assert equality as an associative array.
-     *
-     * @param  array  $expected
-     * @param  array  $actual
-     * @return void
      */
     protected function assertSameAssociativeArray(array $expected, array $actual): void
     {
@@ -82,11 +72,12 @@ class TagsBuilderTest extends TestCase
             if (is_array($value)) {
                 $this->assertSameAssociativeArray($value, $actual[$key]);
                 unset($actual[$key]);
+
                 continue;
             }
             self::assertSame($value, $actual[$key]);
             unset($actual[$key]);
         }
-        self::assertCount(0, $actual, sprintf('[%s] does not matched keys.', join(', ', array_keys($actual))));
+        self::assertCount(0, $actual, sprintf('[%s] does not matched keys.', implode(', ', array_keys($actual))));
     }
 }

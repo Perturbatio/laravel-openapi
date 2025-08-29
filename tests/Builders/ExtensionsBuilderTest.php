@@ -22,7 +22,7 @@ use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 #[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
 class ExtensionsBuilderTest extends TestCase
 {
-    public function testBuildUsingFactory(): void
+    public function test_build_using_factory(): void
     {
         $operation = Operation::create()->action('get');
 
@@ -50,7 +50,7 @@ class ExtensionsBuilderTest extends TestCase
         ], $openApi->toArray());
     }
 
-    public function testBuildUsingKeyValue(): void
+    public function test_build_using_key_value(): void
     {
         $operation = Operation::create()->action('get');
 

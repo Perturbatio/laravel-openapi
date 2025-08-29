@@ -18,7 +18,9 @@ use Symfony\Component\Console\Input\InputOption;
 class SchemaFactoryMakeCommand extends GeneratorCommand
 {
     protected $name = 'openapi:make-schema';
+
     protected $description = 'Create a new Schema factory class';
+
     protected $type = 'Schema';
 
     protected function buildClass($name)
@@ -39,7 +41,7 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         $namespace = $appVersion[0] >= 8 ? $this->laravel->getNamespace().'Models\\' : $this->laravel->getNamespace();
         $model = Str::start($model, $namespace);
 
-        if (!is_a($model, Model::class, true)) {
+        if (! is_a($model, Model::class, true)) {
             throw new InvalidArgumentException('Invalid model');
         }
 
@@ -47,7 +49,7 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         $model = app($model);
 
         $columns = SchemaFacade::connection($model->getConnectionName())->getColumnListing(config('database.connections.'.config('database.default').'.prefix',
-                '').$model->getTable());
+            '').$model->getTable());
         $connection = $model->getConnection();
 
         $definition = 'return Schema::object(\''.class_basename($model).'\')'.PHP_EOL;
@@ -57,7 +59,7 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
             ->map(static function ($column) use ($model, $connection) {
                 /** @var Column $column */
                 $column = $connection->getDoctrineColumn(config('database.connections.'.config('database.default').'.prefix',
-                        '').$model->getTable(), $column);
+                    '').$model->getTable(), $column);
                 $name = $column->getName();
                 $default = $column->getDefault();
                 $notNull = $column->getNotnull();

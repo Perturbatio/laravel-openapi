@@ -23,13 +23,13 @@ class ClassMapGenerator
         $map = [];
 
         foreach ($dir as $file) {
-            if (!$file->isFile()) {
+            if (! $file->isFile()) {
                 continue;
             }
 
             $path = $file->getRealPath() ?: $file->getPathname();
 
-            if ('php' !== pathinfo($path, PATHINFO_EXTENSION)) {
+            if (pathinfo($path, PATHINFO_EXTENSION) !== 'php') {
                 continue;
             }
 
@@ -70,7 +70,7 @@ class ClassMapGenerator
         for ($i = 0; isset($tokens[$i]); $i++) {
             $token = $tokens[$i];
 
-            if (!isset($token[1])) {
+            if (! isset($token[1])) {
                 continue;
             }
 
@@ -93,16 +93,16 @@ class ClassMapGenerator
                     // Skip usage of ::class constant
                     $isClassConstant = false;
                     for ($j = $i - 1; $j > 0; $j--) {
-                        if (!isset($tokens[$j][1])) {
+                        if (! isset($tokens[$j][1])) {
                             break;
                         }
 
-                        if (T_DOUBLE_COLON === $tokens[$j][0]) {
+                        if ($tokens[$j][0] === T_DOUBLE_COLON) {
                             $isClassConstant = true;
                             break;
                         }
 
-                        if (!in_array($tokens[$j][0], [T_WHITESPACE, T_DOC_COMMENT, T_COMMENT], true)) {
+                        if (! in_array($tokens[$j][0], [T_WHITESPACE, T_DOC_COMMENT, T_COMMENT], true)) {
                             break;
                         }
                     }
@@ -114,9 +114,9 @@ class ClassMapGenerator
                     // Find the classname
                     while (isset($tokens[++$i][1])) {
                         $t = $tokens[$i];
-                        if (T_STRING === $t[0]) {
+                        if ($t[0] === T_STRING) {
                             $class .= $t[1];
-                        } elseif ('' !== $class && T_WHITESPACE === $t[0]) {
+                        } elseif ($class !== '' && $t[0] === T_WHITESPACE) {
                             break;
                         }
                     }

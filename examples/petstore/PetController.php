@@ -15,7 +15,5 @@ class PetController
     #[OpenApi\Operation('listPets')]
     #[OpenApi\Parameters(ListPetsParameters::class)]
     #[OpenApi\Response(ErrorValidationResponse::class, 422)]
-    public function index()
-    {
-    }
+    public function index() {}
 }

@@ -18,7 +18,7 @@ trait Referencable
     {
         $instance = app(static::class);
 
-        if (!$instance instanceof Reusable) {
+        if (! $instance instanceof Reusable) {
             throw new InvalidArgumentException('"'.static::class.'" must implement "'.Reusable::class.'" in order to be referencable.');
         }
 

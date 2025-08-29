@@ -32,7 +32,7 @@ class SecurityBuilderTest extends TestCase
     /**
      * We're just making sure we're getting the expected output.
      */
-    public function testWeCanBuildUpTheSecurityScheme(): void
+    public function test_we_can_build_up_the_security_scheme(): void
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();
@@ -84,7 +84,7 @@ class SecurityBuilderTest extends TestCase
      * We're just verifying that the builder is capable of
      * adding security information to the operation.
      */
-    public function testWeCanAddOperationSecurityUsingBuilder()
+    public function test_we_can_add_operation_security_using_builder()
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();
@@ -154,7 +154,7 @@ class SecurityBuilderTest extends TestCase
      * He's the main part of the PR. It's not possible to turn
      * off security for an operation.
      */
-    public function testWeCanAddTurnOffOperationSecurityUsingBuilder()
+    public function test_we_can_add_turn_off_operation_security_using_builder()
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();

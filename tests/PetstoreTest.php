@@ -3,7 +3,6 @@
 namespace Vyuldashev\LaravelOpenApi\Tests;
 
 use Examples\Petstore\PetController;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Components;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -54,7 +53,7 @@ class PetstoreTest extends TestCase
         ]);
     }
 
-    public function testGenerate(): void
+    public function test_generate(): void
     {
         $spec = $this->generate()->toArray();
 

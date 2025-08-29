@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 class CallbackFactoryMakeCommand extends GeneratorCommand
 {
     protected $name = 'openapi:make-callback';
+
     protected $description = 'Create a new callback factory class';
+
     protected $type = 'Extension';
 
     protected function getStub(): string

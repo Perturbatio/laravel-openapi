@@ -9,7 +9,6 @@ use Illuminate\Support\Arr;
 class ServersBuilder
 {
     /**
-     * @param  array  $config
      * @return Server[]
      */
     public function build(array $config): array

@@ -9,6 +9,7 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityRequirement;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
 use phpDocumentor\Reflection\DocBlock;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Vyuldashev\LaravelOpenApi\Attributes\Operation as AttributesOperation;
 use Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\SecurityBuilder;
 use Vyuldashev\LaravelOpenApi\Builders\Paths\OperationsBuilder;
@@ -16,6 +17,16 @@ use Vyuldashev\LaravelOpenApi\Factories\SecuritySchemeFactory;
 use Vyuldashev\LaravelOpenApi\RouteInformation;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 
+#[CoversClass(SecurityBuilder::class)]
+#[CoversClass(OperationsBuilder::class)]
+#[CoversClass(AttributesOperation::class)]
+#[CoversClass(RouteInformation::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\CallbacksBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ParametersBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\RequestBodyBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ResponsesBuilder::class)]
 class SecurityBuilderTest extends TestCase
 {
     /**

@@ -6,11 +6,19 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Operation;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\PathItem;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Vyuldashev\LaravelOpenApi\Attributes\Extension;
 use Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder;
 use Vyuldashev\LaravelOpenApi\Factories\ExtensionFactory;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
-
+#[CoversClass(Operation::class)]
+#[CoversClass(ExtensionsBuilder::class)]
+#[CoversClass(Extension::class)]
+#[CoversClass(ExtensionFactory::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
 class ExtensionsBuilderTest extends TestCase
 {
     public function testBuildUsingFactory(): void

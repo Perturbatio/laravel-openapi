@@ -73,7 +73,7 @@ class ComponentsBuilder
             $components = $components->securitySchemes(...$securitySchemes);
         }
 
-        if (! $hasAnyObjects) {
+        if (!$hasAnyObjects) {
             return null;
         }
 

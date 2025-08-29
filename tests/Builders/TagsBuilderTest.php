@@ -31,32 +31,40 @@ class TagsBuilderTest extends TestCase
     {
         return [
             'If the external docs do not exist, it can output the correct json.' => [
-                [[
-                    'name' => 'post',
-                    'description' => 'Posts',
-                ]],
-                [[
-                    'name' => 'post',
-                    'description' => 'Posts',
-                ]],
+                [
+                    [
+                        'name' => 'post',
+                        'description' => 'Posts',
+                    ]
+                ],
+                [
+                    [
+                        'name' => 'post',
+                        'description' => 'Posts',
+                    ]
+                ],
             ],
             'If the external docs are present, it can output the correct json.' => [
-                [[
-                    'name' => 'post',
-                    'description' => 'Posts',
-                    'externalDocs' => [
-                        'description' => 'External API documentation',
-                        'url' => 'https://example.com/external-docs',
-                    ],
-                ]],
-                [[
-                    'name' => 'post',
-                    'description' => 'Posts',
-                    'externalDocs' => [
-                        'description' => 'External API documentation',
-                        'url' => 'https://example.com/external-docs',
-                    ],
-                ]],
+                [
+                    [
+                        'name' => 'post',
+                        'description' => 'Posts',
+                        'externalDocs' => [
+                            'description' => 'External API documentation',
+                            'url' => 'https://example.com/external-docs',
+                        ],
+                    ]
+                ],
+                [
+                    [
+                        'name' => 'post',
+                        'description' => 'Posts',
+                        'externalDocs' => [
+                            'description' => 'External API documentation',
+                            'url' => 'https://example.com/external-docs',
+                        ],
+                    ]
+                ],
             ],
         ];
     }

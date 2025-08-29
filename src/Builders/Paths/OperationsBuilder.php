@@ -27,14 +27,13 @@ class OperationsBuilder
     protected SecurityBuilder $securityBuilder;
 
     public function __construct(
-        CallbacksBuilder   $callbacksBuilder,
-        ParametersBuilder  $parametersBuilder,
+        CallbacksBuilder $callbacksBuilder,
+        ParametersBuilder $parametersBuilder,
         RequestBodyBuilder $requestBodyBuilder,
-        ResponsesBuilder   $responsesBuilder,
-        ExtensionsBuilder  $extensionsBuilder,
-        SecurityBuilder    $securityBuilder
-    )
-    {
+        ResponsesBuilder $responsesBuilder,
+        ExtensionsBuilder $extensionsBuilder,
+        SecurityBuilder $securityBuilder
+    ) {
         $this->callbacksBuilder = $callbacksBuilder;
         $this->parametersBuilder = $parametersBuilder;
         $this->requestBodyBuilder = $requestBodyBuilder;
@@ -44,7 +43,7 @@ class OperationsBuilder
     }
 
     /**
-     * @param RouteInformation[]|Collection $routes
+     * @param  RouteInformation[]|Collection  $routes
      * @return array
      *
      * @throws InvalidArgumentException

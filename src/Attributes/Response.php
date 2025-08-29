@@ -19,7 +19,7 @@ class Response
     {
         $this->factory = class_exists($factory) ? $factory : app()->getNamespace().'OpenApi\\Responses\\'.$factory;
 
-        if (! is_a($this->factory, ResponseFactory::class, true)) {
+        if (!is_a($this->factory, ResponseFactory::class, true)) {
             throw new InvalidArgumentException('Factory class must be instance of ResponseFactory');
         }
 

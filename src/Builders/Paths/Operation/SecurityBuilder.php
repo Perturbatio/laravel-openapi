@@ -11,8 +11,8 @@ class SecurityBuilder
     public function build(RouteInformation $route): array
     {
         return $route->actionAttributes
-            ->filter(static fn (object $attribute) => $attribute instanceof OperationAttribute)
-            ->filter(static fn (OperationAttribute $attribute) => isset($attribute->security))
+            ->filter(static fn(object $attribute) => $attribute instanceof OperationAttribute)
+            ->filter(static fn(OperationAttribute $attribute) => isset($attribute->security))
             ->map(static function (OperationAttribute $attribute) {
                 // return a null scheme if the security is set to ''
                 if ($attribute->security === '') {

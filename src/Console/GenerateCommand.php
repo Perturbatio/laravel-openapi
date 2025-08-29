@@ -16,7 +16,7 @@ class GenerateCommand extends Command
     {
         $collectionExists = collect(config('openapi.collections'))->has($this->argument('collection'));
 
-        if (! $collectionExists) {
+        if (!$collectionExists) {
             $this->error('Collection "'.$this->argument('collection').'" does not exist.');
 
             return;
@@ -24,7 +24,8 @@ class GenerateCommand extends Command
 
         if ($this->option('output')) {
             //create file if not exists, or overwrite if exists and put the generated JSON there
-            file_put_contents($this->option('output'), $generator->generate($this->argument('collection'))->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents($this->option('output'),
+                $generator->generate($this->argument('collection'))->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
             $this->info('OpenAPI specification generated successfully.');
 

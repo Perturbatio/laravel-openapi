@@ -14,7 +14,8 @@ class SecuritySchemeFactoryMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $output = parent::buildClass($name);
-        $output = str_replace('DummySecurityScheme', Str::replaceLast('SecurityScheme', '', class_basename($name)), $output);
+        $output = str_replace('DummySecurityScheme', Str::replaceLast('SecurityScheme', '', class_basename($name)),
+            $output);
 
         return $output;
     }

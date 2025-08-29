@@ -31,101 +31,117 @@ class ServersBuilderTest extends TestCase
     {
         return [
             'If the variables field does not exist, it is possible to output the correct json.' => [
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [],
-                ]],
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                ]],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [],
+                    ]
+                ],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                    ]
+                ],
             ],
             'If the variables field is present, it can output the correct json.' => [
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                            ],
                         ],
-                    ],
-                ]],
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
+                    ]
+                ],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                            ],
                         ],
-                    ],
-                ]],
+                    ]
+                ],
             ],
             'If there is a variables field containing enum, it can output the correct json.' => [
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
-                            'enum' => [
-                                'A',
-                                'B',
-                                'C',
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                                'enum' => [
+                                    'A',
+                                    'B',
+                                    'C',
+                                ],
                             ],
                         ],
-                    ],
-                ]],
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
-                            'enum' => [
-                                'A',
-                                'B',
-                                'C',
+                    ]
+                ],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                                'enum' => [
+                                    'A',
+                                    'B',
+                                    'C',
+                                ],
                             ],
                         ],
-                    ],
-                ]],
+                    ]
+                ],
             ],
             'If there are variables fields in multiple formats, it is possible to output the correct json.' => [
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
-                            'enum' => ['A', 'B'],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                                'enum' => ['A', 'B'],
+                            ],
+                            'variable_name_B' => [
+                                'default' => 'sample',
+                                'description' => 'sample',
+                            ],
                         ],
-                        'variable_name_B' => [
-                            'default' => 'sample',
-                            'description' => 'sample',
+                    ]
+                ],
+                [
+                    [
+                        'url' => 'http://example.com',
+                        'description' => 'sample_description',
+                        'variables' => [
+                            'variable_name' => [
+                                'default' => 'variable_defalut',
+                                'description' => 'variable_description',
+                                'enum' => ['A', 'B'],
+                            ],
+                            'variable_name_B' => [
+                                'default' => 'sample',
+                                'description' => 'sample',
+                            ],
                         ],
-                    ],
-                ]],
-                [[
-                    'url' => 'http://example.com',
-                    'description' => 'sample_description',
-                    'variables' => [
-                        'variable_name' => [
-                            'default' => 'variable_defalut',
-                            'description' => 'variable_description',
-                            'enum' => ['A', 'B'],
-                        ],
-                        'variable_name_B' => [
-                            'default' => 'sample',
-                            'description' => 'sample',
-                        ],
-                    ],
-                ]],
+                    ]
+                ],
             ],
         ];
     }

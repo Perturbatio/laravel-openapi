@@ -23,7 +23,7 @@ class ClassMapGenerator
         $map = [];
 
         foreach ($dir as $file) {
-            if (! $file->isFile()) {
+            if (!$file->isFile()) {
                 continue;
             }
 
@@ -70,7 +70,7 @@ class ClassMapGenerator
         for ($i = 0; isset($tokens[$i]); $i++) {
             $token = $tokens[$i];
 
-            if (! isset($token[1])) {
+            if (!isset($token[1])) {
                 continue;
             }
 
@@ -93,7 +93,7 @@ class ClassMapGenerator
                     // Skip usage of ::class constant
                     $isClassConstant = false;
                     for ($j = $i - 1; $j > 0; $j--) {
-                        if (! isset($tokens[$j][1])) {
+                        if (!isset($tokens[$j][1])) {
                             break;
                         }
 
@@ -102,7 +102,7 @@ class ClassMapGenerator
                             break;
                         }
 
-                        if (! in_array($tokens[$j][0], [T_WHITESPACE, T_DOC_COMMENT, T_COMMENT], true)) {
+                        if (!in_array($tokens[$j][0], [T_WHITESPACE, T_DOC_COMMENT, T_COMMENT], true)) {
                             break;
                         }
                     }

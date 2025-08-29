@@ -11,6 +11,7 @@ use Vyuldashev\LaravelOpenApi\Attributes\Extension;
 use Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder;
 use Vyuldashev\LaravelOpenApi\Factories\ExtensionFactory;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
+
 #[CoversClass(Operation::class)]
 #[CoversClass(ExtensionsBuilder::class)]
 #[CoversClass(Extension::class)]

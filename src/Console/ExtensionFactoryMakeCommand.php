@@ -14,7 +14,8 @@ class ExtensionFactoryMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $output = parent::buildClass($name);
-        $output = str_replace('DummyExtension', Str::start(Str::snake(Str::replaceLast('DummyExtension', '', class_basename($name)), '-'), 'x-'), $output);
+        $output = str_replace('DummyExtension',
+            Str::start(Str::snake(Str::replaceLast('DummyExtension', '', class_basename($name)), '-'), 'x-'), $output);
 
         return $output;
     }

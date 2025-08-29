@@ -39,14 +39,15 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         $namespace = $appVersion[0] >= 8 ? $this->laravel->getNamespace().'Models\\' : $this->laravel->getNamespace();
         $model = Str::start($model, $namespace);
 
-        if (! is_a($model, Model::class, true)) {
+        if (!is_a($model, Model::class, true)) {
             throw new InvalidArgumentException('Invalid model');
         }
 
         /** @var Model $model */
         $model = app($model);
 
-        $columns = SchemaFacade::connection($model->getConnectionName())->getColumnListing(config('database.connections.'.config('database.default').'.prefix', '').$model->getTable());
+        $columns = SchemaFacade::connection($model->getConnectionName())->getColumnListing(config('database.connections.'.config('database.default').'.prefix',
+                '').$model->getTable());
         $connection = $model->getConnection();
 
         $definition = 'return Schema::object(\''.class_basename($model).'\')'.PHP_EOL;
@@ -55,7 +56,8 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         $properties = collect($columns)
             ->map(static function ($column) use ($model, $connection) {
                 /** @var Column $column */
-                $column = $connection->getDoctrineColumn(config('database.connections.'.config('database.default').'.prefix', '').$model->getTable(), $column);
+                $column = $connection->getDoctrineColumn(config('database.connections.'.config('database.default').'.prefix',
+                        '').$model->getTable(), $column);
                 $name = $column->getName();
                 $default = $column->getDefault();
                 $notNull = $column->getNotnull();

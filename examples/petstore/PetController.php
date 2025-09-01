@@ -17,6 +17,5 @@ class PetController
     #[OpenApi\Response(ErrorValidationResponse::class, 422)]
     public function index()
     {
-
     }
 }

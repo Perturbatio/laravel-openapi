@@ -22,7 +22,7 @@
         "php": "^8.5",
         "ext-json": "*",
         "doctrine/dbal": "^2.6|^3.0|^4.0",
-        "goldspecdigital/oooas": "^v2.10.0",
+        "goldspecdigital/oooas": "dev-master",
         "laravel/framework": "^12.0|^13.0",
         "phpdocumentor/reflection-docblock": "^5.0"
     },
@@ -33,7 +33,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Vyuldashev\\LaravelOpenApi\\": "src/"
+            "Vyuldashev\\LaravelOpenApi\\": "src/",
+            "Vyuldashev\\LaravelOpenApi\\Tests\\": "tests/"
         }
     },
     "autoload-dev": {
@@ -53,5 +54,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "goldspecdigital/oooas": {
+            "type": "vcs",
+            "url": "git@github.com:EG-A-S/oooas.git"
+        }
+    }
 }

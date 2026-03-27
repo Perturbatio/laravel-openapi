@@ -7,10 +7,11 @@ namespace Vyuldashev\LaravelOpenApi\Tests\Builders;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Vyuldashev\LaravelOpenApi\Builders\InfoBuilder;
+use Vyuldashev\LaravelOpenApi\OpenApiServiceProvider;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 
 #[CoversClass(InfoBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
+#[CoversClass(OpenApiServiceProvider::class)]
 class InfoBuilderTest extends TestCase
 {
     #[DataProvider('providerBuildContact')]

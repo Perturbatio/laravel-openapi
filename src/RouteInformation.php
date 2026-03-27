@@ -14,6 +14,7 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
+use Vyuldashev\LaravelOpenApi\Attributes\Parameters;
 
 class RouteInformation
 {
@@ -85,7 +86,7 @@ class RouteInformation
                 ->map(fn (ReflectionAttribute $attribute) => $attribute->newInstance());
 
             $containsControllerLevelParamter = $actionAttributes->contains(fn ($value
-            ) => $value instanceof \Vyuldashev\LaravelOpenApi\Attributes\Parameters);
+            ) => $value instanceof Parameters);
 
             $instance->domain = $route->domain();
             $instance->method = $method;

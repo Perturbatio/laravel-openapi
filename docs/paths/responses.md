@@ -114,3 +114,24 @@ class UserController extends Controller
     }
 }
 ```
+
+## Response status as a string
+You can also use string status codes, such as `204` or `500`:
+
+```php
+
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+
+class UserController extends Controller
+{
+    /**
+     * Create user.
+    */
+    #[OpenApi\Operation]
+    #[OpenApi\Response(factory: CreatedUserResponse::class, statusCode: "201")]
+    public function store(Request $request)
+    {
+        //
+    }
+}
+```

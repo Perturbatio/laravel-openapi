@@ -13,7 +13,6 @@ use Vyuldashev\LaravelOpenApi\Factories\ExtensionFactory;
 use Vyuldashev\LaravelOpenApi\OpenApiServiceProvider;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 
-
 #[CoversClass(ExtensionsBuilder::class)]
 #[CoversClass(Extension::class)]
 #[CoversClass(ExtensionFactory::class)]

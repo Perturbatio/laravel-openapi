@@ -15,7 +15,7 @@ abstract class SchemaFactory
     use Referencable;
 
     /**
-     * @return AllOf|OneOf|AnyOf|Not|Schema
+     * @return AllOf|OneOf|AnyOf|Not|Schema|SchemaContract
      */
     abstract public function build(): SchemaContract;
 }

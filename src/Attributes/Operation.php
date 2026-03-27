@@ -21,7 +21,7 @@ class Operation
     public ?array $servers;
 
     /**
-     * @param  \Vyuldashev\LaravelOpenApi\Factories\SecuritySchemeFactory|string|null  $security
+     * @param  SecuritySchemeFactory|string|null  $security
      *
      * @throws InvalidArgumentException
      */

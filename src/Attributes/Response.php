@@ -11,11 +11,11 @@ class Response
 {
     public string $factory;
 
-    public ?int $statusCode;
+    public int|string|null $statusCode;
 
     public ?string $description;
 
-    public function __construct(string $factory, ?int $statusCode = null, ?string $description = null)
+    public function __construct(string $factory, int|string|null $statusCode = null, ?string $description = null)
     {
         $this->factory = class_exists($factory) ? $factory : app()->getNamespace().'OpenApi\\Responses\\'.$factory;
 

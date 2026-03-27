@@ -18,9 +18,13 @@ use ReflectionParameter;
 class RouteInformation
 {
     public ?string $domain;
+
     public string $method;
+
     public string $uri;
+
     public ?string $name;
+
     public string $controller;
 
     public Collection $parameters;
@@ -39,14 +43,11 @@ class RouteInformation
     public ?DocBlock $actionDocBlock;
 
     /**
-     * @param  Route  $route
-     * @return RouteInformation
-     *
      * @throws ReflectionException
      */
     public static function createFromRoute(Route $route): RouteInformation
     {
-        return tap(new static(), static function (self $instance) use ($route): void {
+        return tap(new static, static function (self $instance) use ($route): void {
             $method = collect($route->methods())
                 ->map(static fn ($value) => Str::lower($value))
                 ->filter(static fn ($value) => ! in_array($value, ['head', 'options'], true))
@@ -83,7 +84,8 @@ class RouteInformation
             $actionAttributes = collect($reflectionMethod->getAttributes())
                 ->map(fn (ReflectionAttribute $attribute) => $attribute->newInstance());
 
-            $containsControllerLevelParamter = $actionAttributes->contains(fn ($value) => $value instanceof \Vyuldashev\LaravelOpenApi\Attributes\Parameters);
+            $containsControllerLevelParamter = $actionAttributes->contains(fn ($value
+            ) => $value instanceof \Vyuldashev\LaravelOpenApi\Attributes\Parameters);
 
             $instance->domain = $route->domain();
             $instance->method = $method;

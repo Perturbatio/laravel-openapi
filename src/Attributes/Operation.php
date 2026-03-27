@@ -21,22 +21,24 @@ class Operation
     public ?array $servers;
 
     /**
-     * @param  string|null  $id
-     * @param  array  $tags
      * @param  \Vyuldashev\LaravelOpenApi\Factories\SecuritySchemeFactory|string|null  $security
-     * @param  string|null  $method
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(string $id = null, array $tags = [], string $security = null, string $method = null, array $servers = null)
-    {
+    public function __construct(
+        ?string $id = null,
+        array $tags = [],
+        ?string $security = null,
+        ?string $method = null,
+        ?array $servers = null
+    ) {
         $this->id = $id;
         $this->tags = $tags;
         $this->method = $method;
         $this->servers = $servers;
 
         if ($security === '') {
-            //user wants to turn off security on this operation
+            // user wants to turn off security on this operation
             $this->security = $security;
 
             return;
@@ -47,7 +49,8 @@ class Operation
 
             if (! is_a($this->security, SecuritySchemeFactory::class, true)) {
                 throw new InvalidArgumentException(
-                    sprintf('Security class is either not declared or is not an instance of %s', SecuritySchemeFactory::class)
+                    sprintf('Security class is either not declared or is not an instance of %s',
+                        SecuritySchemeFactory::class)
                 );
             }
         }

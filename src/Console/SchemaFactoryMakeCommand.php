@@ -18,7 +18,9 @@ use Symfony\Component\Console\Input\InputOption;
 class SchemaFactoryMakeCommand extends GeneratorCommand
 {
     protected $name = 'openapi:make-schema';
+
     protected $description = 'Create a new Schema factory class';
+
     protected $type = 'Schema';
 
     protected function buildClass($name)
@@ -46,7 +48,8 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         /** @var Model $model */
         $model = app($model);
 
-        $columns = SchemaFacade::connection($model->getConnectionName())->getColumnListing(config('database.connections.'.config('database.default').'.prefix', '').$model->getTable());
+        $columns = SchemaFacade::connection($model->getConnectionName())->getColumnListing(config('database.connections.'.config('database.default').'.prefix',
+            '').$model->getTable());
         $connection = $model->getConnection();
 
         $definition = 'return Schema::object(\''.class_basename($model).'\')'.PHP_EOL;
@@ -55,7 +58,8 @@ class SchemaFactoryMakeCommand extends GeneratorCommand
         $properties = collect($columns)
             ->map(static function ($column) use ($model, $connection) {
                 /** @var Column $column */
-                $column = $connection->getDoctrineColumn(config('database.connections.'.config('database.default').'.prefix', '').$model->getTable(), $column);
+                $column = $connection->getDoctrineColumn(config('database.connections.'.config('database.default').'.prefix',
+                    '').$model->getTable(), $column);
                 $name = $column->getName();
                 $default = $column->getDefault();
                 $notNull = $column->getNotnull();

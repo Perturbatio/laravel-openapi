@@ -9,6 +9,7 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityRequirement;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
 use phpDocumentor\Reflection\DocBlock;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Vyuldashev\LaravelOpenApi\Attributes\Operation as AttributesOperation;
 use Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\SecurityBuilder;
 use Vyuldashev\LaravelOpenApi\Builders\Paths\OperationsBuilder;
@@ -16,12 +17,22 @@ use Vyuldashev\LaravelOpenApi\Factories\SecuritySchemeFactory;
 use Vyuldashev\LaravelOpenApi\RouteInformation;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 
+#[CoversClass(SecurityBuilder::class)]
+#[CoversClass(OperationsBuilder::class)]
+#[CoversClass(AttributesOperation::class)]
+#[CoversClass(RouteInformation::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\CallbacksBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ParametersBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\RequestBodyBuilder::class)]
+#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ResponsesBuilder::class)]
 class SecurityBuilderTest extends TestCase
 {
     /**
      * We're just making sure we're getting the expected output.
      */
-    public function testWeCanBuildUpTheSecurityScheme(): void
+    public function test_we_can_build_up_the_security_scheme(): void
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();
@@ -73,7 +84,7 @@ class SecurityBuilderTest extends TestCase
      * We're just verifying that the builder is capable of
      * adding security information to the operation.
      */
-    public function testWeCanAddOperationSecurityUsingBuilder()
+    public function test_we_can_add_operation_security_using_builder()
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();
@@ -100,13 +111,13 @@ class SecurityBuilderTest extends TestCase
             ->action('get');
 
         $openApi = OpenApi::create()
-        ->security($globalRequirement)
-        ->components($components)
-        ->paths(
-            PathItem::create()
-                ->route('/foo')
-                ->operations($operation)
-        );
+            ->security($globalRequirement)
+            ->components($components)
+            ->paths(
+                PathItem::create()
+                    ->route('/foo')
+                    ->operations($operation)
+            );
 
         self::assertSame([
             'paths' => [
@@ -143,7 +154,7 @@ class SecurityBuilderTest extends TestCase
      * He's the main part of the PR. It's not possible to turn
      * off security for an operation.
      */
-    public function testWeCanAddTurnOffOperationSecurityUsingBuilder()
+    public function test_we_can_add_turn_off_operation_security_using_builder()
     {
         $securityFactory = resolve(JwtSecurityScheme::class);
         $testJwtScheme = $securityFactory->build();
@@ -175,13 +186,13 @@ class SecurityBuilderTest extends TestCase
         $operations = $operationsBuilder->build([$routeInfo]);
 
         $openApi = OpenApi::create()
-        ->security($globalRequirement)
-        ->components($components)
-        ->paths(
-            PathItem::create()
-                ->route('/foo')
-                ->operations(...$operations)
-        );
+            ->security($globalRequirement)
+            ->components($components)
+            ->paths(
+                PathItem::create()
+                    ->route('/foo')
+                    ->operations(...$operations)
+            );
 
         self::assertSame([
             'paths' => [

@@ -24,9 +24,7 @@ class PathsBuilder
     }
 
     /**
-     * @param  string  $collection
      * @param  PathMiddleware[]  $middlewares
-     * @return array
      */
     public function build(
         string $collection,

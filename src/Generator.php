@@ -17,10 +17,15 @@ class Generator
     public const COLLECTION_DEFAULT = 'default';
 
     protected array $config;
+
     protected InfoBuilder $infoBuilder;
+
     protected ServersBuilder $serversBuilder;
+
     protected TagsBuilder $tagsBuilder;
+
     protected PathsBuilder $pathsBuilder;
+
     protected ComponentsBuilder $componentsBuilder;
 
     public function __construct(

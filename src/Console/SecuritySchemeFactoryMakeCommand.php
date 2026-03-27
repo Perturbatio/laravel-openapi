@@ -8,13 +8,16 @@ use Illuminate\Support\Str;
 class SecuritySchemeFactoryMakeCommand extends GeneratorCommand
 {
     protected $name = 'openapi:make-security-scheme';
+
     protected $description = 'Create a new SecurityScheme factory class';
+
     protected $type = 'SecurityScheme';
 
     protected function buildClass($name)
     {
         $output = parent::buildClass($name);
-        $output = str_replace('DummySecurityScheme', Str::replaceLast('SecurityScheme', '', class_basename($name)), $output);
+        $output = str_replace('DummySecurityScheme', Str::replaceLast('SecurityScheme', '', class_basename($name)),
+            $output);
 
         return $output;
     }

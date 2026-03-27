@@ -13,9 +13,13 @@ use Vyuldashev\LaravelOpenApi\Generator;
 class ComponentsBuilder
 {
     protected CallbacksBuilder $callbacksBuilder;
+
     protected RequestBodiesBuilder $requestBodiesBuilder;
+
     protected ResponsesBuilder $responsesBuilder;
+
     protected SchemasBuilder $schemasBuilder;
+
     protected SecuritySchemesBuilder $securitySchemesBuilder;
 
     public function __construct(

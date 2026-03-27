@@ -10,16 +10,14 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Vyuldashev\LaravelOpenApi\Attributes\Extension;
 use Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder;
 use Vyuldashev\LaravelOpenApi\Factories\ExtensionFactory;
+use Vyuldashev\LaravelOpenApi\OpenApiServiceProvider;
 use Vyuldashev\LaravelOpenApi\Tests\TestCase;
 
-#[CoversClass(Operation::class)]
+
 #[CoversClass(ExtensionsBuilder::class)]
 #[CoversClass(Extension::class)]
 #[CoversClass(ExtensionFactory::class)]
-#[CoversClass(Schema::class)]
-#[CoversClass(PathItem::class)]
-#[CoversClass(OpenApi::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
+#[CoversClass(OpenApiServiceProvider::class)]
 class ExtensionsBuilderTest extends TestCase
 {
     public function test_build_using_factory(): void

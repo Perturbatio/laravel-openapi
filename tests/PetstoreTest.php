@@ -5,33 +5,57 @@ namespace Vyuldashev\LaravelOpenApi\Tests;
 use Examples\Petstore\PetController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Vyuldashev\LaravelOpenApi\Attributes\Callback;
+use Vyuldashev\LaravelOpenApi\Attributes\Operation;
+use Vyuldashev\LaravelOpenApi\Attributes\Parameters;
+use Vyuldashev\LaravelOpenApi\Attributes\Response;
+use Vyuldashev\LaravelOpenApi\Builders\Components\Builder;
+use Vyuldashev\LaravelOpenApi\Builders\Components\CallbacksBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Components\RequestBodiesBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Components\ResponsesBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Components\SchemasBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Components\SecuritySchemesBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\ComponentsBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\InfoBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ParametersBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\RequestBodyBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\SecurityBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\Paths\OperationsBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\PathsBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\ServersBuilder;
+use Vyuldashev\LaravelOpenApi\Builders\TagsBuilder;
+use Vyuldashev\LaravelOpenApi\ClassMapGenerator;
+use Vyuldashev\LaravelOpenApi\Generator;
+use Vyuldashev\LaravelOpenApi\OpenApiServiceProvider;
+use Vyuldashev\LaravelOpenApi\RouteInformation;
 
-#[CoversClass(\Vyuldashev\LaravelOpenApi\OpenApiServiceProvider::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Generator::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Attributes\Operation::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Attributes\Parameters::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Attributes\Response::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\ComponentsBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\Builder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\CallbacksBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\RequestBodiesBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\ResponsesBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\SchemasBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Components\SecuritySchemesBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\ExtensionsBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\InfoBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\PathsBuilder::class)]
+#[CoversClass(OpenApiServiceProvider::class)]
+#[CoversClass(Generator::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(Parameters::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(ComponentsBuilder::class)]
+#[CoversClass(Builder::class)]
+#[CoversClass(CallbacksBuilder::class)]
+#[CoversClass(RequestBodiesBuilder::class)]
+#[CoversClass(ResponsesBuilder::class)]
+#[CoversClass(SchemasBuilder::class)]
+#[CoversClass(SecuritySchemesBuilder::class)]
+#[CoversClass(ExtensionsBuilder::class)]
+#[CoversClass(InfoBuilder::class)]
+#[CoversClass(PathsBuilder::class)]
 #[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\CallbacksBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Attributes\Callback::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ParametersBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\RequestBodyBuilder::class)]
+#[CoversClass(Callback::class)]
+#[CoversClass(ParametersBuilder::class)]
+#[CoversClass(RequestBodyBuilder::class)]
 #[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\ResponsesBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\Operation\SecurityBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\Paths\OperationsBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\ServersBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\Builders\TagsBuilder::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\ClassMapGenerator::class)]
-#[CoversClass(\Vyuldashev\LaravelOpenApi\RouteInformation::class)]
+#[CoversClass(SecurityBuilder::class)]
+#[CoversClass(OperationsBuilder::class)]
+#[CoversClass(ServersBuilder::class)]
+#[CoversClass(TagsBuilder::class)]
+#[CoversClass(ClassMapGenerator::class)]
+#[CoversClass(RouteInformation::class)]
 /**
  * @see https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.0/petstore.yaml
  */
